@@ -4,6 +4,13 @@ const smallScreen = matchMedia("(max-width: 730px)");
 const selectedDetail = byId("detail");
 let selected = sortedWorks.find(work => work.id === "kripto-haciz");
 let activeView = "themes";
+const themeNotes = {
+  digital: "Elektronik imza, UETS ve e-duruşma",
+  procedure: "Tanık listesi, ihtiyati tedbir ve istinaf",
+  enforcement: "Kripto, koleksiyonlar, hayvan haczi ve nafaka",
+  heritage: "Kültür varlıkları ve UNESCO",
+  economy: "Türkiye’de uluslararası ekonomi hukukunun uygulanması"
+};
 
 function normalize(value) {
   return value.toLocaleLowerCase("tr-TR").replaceAll("ı", "i").normalize("NFD").replace(/\p{M}/gu, "");
@@ -47,7 +54,8 @@ function showWork(work, moveToDetail = false) {
     button.setAttribute("aria-pressed", String(button.dataset.work === work?.id));
   }
   if (!work) return;
-  byId("detail-meta").textContent = `${work.date} · ${work.type} · ${work.evidence}`;
+  byId("detail-kind").textContent = `${work.date} · ${work.type}`;
+  byId("detail-evidence").textContent = work.evidence;
   byId("detail-title").textContent = work.title;
   byId("detail-question").textContent = work.question;
   byId("detail-finding").textContent = work.finding;
@@ -64,12 +72,23 @@ function renderThemes() {
     const matching = filterWorks({theme: id});
     const section = document.createElement("details");
     const heading = document.createElement("summary");
+    const symbol = document.createElement("span");
+    const copy = document.createElement("span");
+    const title = document.createElement("strong");
+    const note = document.createElement("small");
     const count = document.createElement("span");
     const list = document.createElement("ul");
+    section.className = `topic topic-${id}`;
     section.open = id === "enforcement";
+    symbol.className = "topic-symbol";
+    symbol.setAttribute("aria-hidden", "true");
+    copy.className = "topic-copy";
+    title.textContent = name;
+    note.textContent = themeNotes[id];
+    copy.append(title, note);
     count.className = "count";
     count.textContent = `${matching.length} kayıt`;
-    heading.append(name, count);
+    heading.append(symbol, copy, count);
     list.className = "work-list";
     list.append(...matching.map(work => makeWorkRow(work, true)));
     section.append(heading, list);
@@ -110,6 +129,10 @@ for (const year of [...years].sort((first, second) => Number(second) - Number(fi
 byId("total").textContent = works.length;
 byId("themes-tab").addEventListener("click", () => switchView("themes"));
 byId("works-tab").addEventListener("click", () => switchView("works"));
+byId("search-shortcut").addEventListener("click", () => {
+  switchView("works");
+  byId("query").focus();
+});
 byId("query").addEventListener("input", renderList);
 for (const id of ["theme-filter", "type-filter", "year-filter"]) byId(id).addEventListener("change", renderList);
 byId("filters").addEventListener("submit", event => event.preventDefault());
