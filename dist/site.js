@@ -8,6 +8,16 @@ const acarProfile = {
   themes: acarThemes,
   works: acarWorks,
   featured: "kripto-haciz",
+  summary: {
+    areas: [
+      ["Elektronik delil ve tebligat", "E-imzalı belgelerin delil gücü ve UETS kayıtları"],
+      ["Yargılama usulü ve istinaf", "Tanık listeleri, e-duruşma ve icra mahkemesi kararları"],
+      ["Haciz ve malvarlığı", "Kripto para, özel koleksiyon ve hayvan haczi"]
+    ],
+    recent: "2025–2026 çalışmalarında ilk derece yargılamasında tanık listesinin zamanlamasına ve ön inceleme duruşmasına uzaktan katılıma odaklanıyor.",
+    example: "tanik",
+    exampleLabel: "Tanık listesi ne zaman sunulur?"
+  },
   themeNotes: {
     digital: "Elektronik imza, UETS ve e-duruşma",
     procedure: "Tanık listesi, ihtiyati tedbir ve istinaf",
@@ -95,6 +105,7 @@ function renderThemes() {
     const count = document.createElement("span");
     const list = document.createElement("ul");
     section.className = `topic topic-${id}`;
+    section.dataset.theme = id;
     section.open = featuredWork.topics[0] === id;
     symbol.className = "topic-symbol";
     symbol.setAttribute("aria-hidden", "true");
@@ -133,6 +144,50 @@ function switchView(view) {
   byId("works-view").hidden = showingThemes;
   if (showingThemes && !selected) showWork(featuredWork);
   if (!showingThemes) renderList();
+}
+
+function renderProfileSummary() {
+  const {areas, recent, example, exampleLabel} = profile.summary;
+  const card = byId("profile-card");
+  const panel = byId("profile-summary");
+  const toggle = byId("summary-toggle");
+  const exampleButton = byId("summary-example");
+  const exampleWork = sortedWorks.find(work => work.id === example);
+
+  for (const [label, description] of areas) {
+    const item = document.createElement("li");
+    const title = document.createElement("strong");
+    const text = document.createElement("span");
+    title.textContent = label;
+    text.textContent = description;
+    item.append(title, text);
+    byId("summary-themes").append(item);
+  }
+  byId("summary-recent").textContent = recent;
+  exampleButton.textContent = `Örnek çalışma · ${exampleLabel}`;
+  exampleButton.hidden = !exampleWork;
+
+  function toggleSummary() {
+    const open = panel.hidden;
+    panel.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    byId("summary-toggle-label").textContent = open ? "Hoca özetini kapat" : "Hoca özetini aç";
+    if (open) panel.scrollIntoView({block: "nearest"});
+  }
+
+  toggle.addEventListener("click", toggleSummary);
+  card.addEventListener("click", event => {
+    if (!event.target.closest("button, a") && !window.getSelection()?.toString()) toggleSummary();
+  });
+  exampleButton.addEventListener("click", () => {
+    if (!exampleWork) return;
+    switchView("themes");
+    const theme = byId("theme-view").querySelector(`[data-theme="${exampleWork.topics[0]}"]`);
+    if (theme) theme.open = true;
+    showWork(exampleWork);
+    selectedDetail.focus({preventScroll: true});
+    selectedDetail.scrollIntoView({block: "nearest"});
+  });
 }
 
 for (const [id, value] of profiles) byId("academic-picker").add(new Option(value.name, id));
@@ -183,3 +238,4 @@ byId("filters").addEventListener("reset", () => requestAnimationFrame(renderList
 renderThemes();
 renderList();
 showWork(selected);
+renderProfileSummary();

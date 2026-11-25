@@ -7,10 +7,10 @@
   <meta name="description" content="Özyeğin Hukuk akademisyenlerinin araştırma temaları ve kaynaklı çalışma kayıtları.">
   <title>Ayşe Ece Acar | Özyeğin Hukuk Akademisyen Rehberi</title>
   <meta name="theme-color" content="#13232c">
-  <link rel="stylesheet" href="design.css?v=3">
+  <link rel="stylesheet" href="design.css?v=4">
   <script src="works.js" defer></script>
-  <script src="elif.js" defer></script>
-  <script src="site.js?v=3" defer></script>
+  <script src="elif.js?v=4" defer></script>
+  <script src="site.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip" href="#catalog">Çalışmalara geç</a>
@@ -24,19 +24,34 @@
     </div>
   </header>
   <main class="wrap">
-    <header class="hero">
+    <header id="profile-card" class="hero profile-card">
       <div class="hero-copy">
         <p id="hero-field" class="hero-field">Medeni Usul ve İcra İflas Hukuku</p>
         <h1 id="hero-name">Ayşe Ece Acar</h1>
         <p class="role">Dr. Öğr. Üyesi</p>
         <p id="hero-bio" class="bio">Elektronik delil ve tebligat, hukuk yargılaması ve istinaf, haciz ve malvarlığı hukuku üzerine çalışıyor.</p>
         <div class="hero-links">
+          <button id="summary-toggle" type="button" aria-expanded="false" aria-controls="profile-summary"><span id="summary-toggle-label">Hoca özetini aç</span><span class="summary-chevron" aria-hidden="true"></span></button>
           <a id="university-profile" href="https://www.ozyegin.edu.tr/tr/akademik-kadro/eceacar" target="_blank" rel="noopener noreferrer">Özyeğin profili</a>
           <a id="yok-profile" href="https://akademik.yok.gov.tr/academician-details?authorGuidId=E49058D621B20A1D" target="_blank" rel="noopener noreferrer">YÖK Akademik</a>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="visual-sheet sheet-back"></div><div class="visual-sheet sheet-front"><i></i><i></i><i></i><span></span></div></div>
     </header>
+    <section id="profile-summary" class="profile-summary" aria-labelledby="summary-title" hidden>
+      <h2 id="summary-title">30 saniyede hoca özeti</h2>
+      <div class="summary-grid">
+        <div>
+          <h3>Öne çıkan çalışma alanları</h3>
+          <ul id="summary-themes"></ul>
+        </div>
+        <div class="summary-recent">
+          <h3>Son dönem odağı</h3>
+          <p id="summary-recent"></p>
+          <button id="summary-example" class="summary-example" type="button"></button>
+        </div>
+      </div>
+    </section>
     <section id="catalog" aria-label="Çalışma kataloğu">
       <div class="views" aria-label="Profil bölümleri">
         <button id="themes-tab" type="button" aria-pressed="true" aria-controls="theme-view">Araştırma temaları</button>

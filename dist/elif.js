@@ -93,6 +93,17 @@ const elifProfile = {
   universityUrl: elifUniversityUrl,
   yokUrl: elifYokUrl,
   featured: "demans",
+  summary: {
+    areas: [
+      ["İdari yargı ve yetki", "İptal kararları, idari uyuşmazlıklar ve denetim"],
+      ["Göç ve uluslararası koruma", "Mülteciler, idari gözetim ve sınır dışı işlemleri"],
+      ["Kamu hizmeti ve idari sorumluluk", "Sağlık, bakım ve sahipsiz hayvanlarla ilgili idari görevler"],
+      ["Kişisel veriler ve dijital dönüşüm", "KVKK, dijital kamu hizmetleri ve yapay zekâ"]
+    ],
+    recent: "2026’da demans bakımında idarenin planlama ve denetim görevlerini inceliyor. Aynı yıl uluslararası koruma ve yargısal denetim üzerine kitabı yayımlandı.",
+    example: "demans",
+    exampleLabel: "Demans bakımında idarenin rolü"
+  },
   themes: {
     care: "Kamu hizmeti, sağlık ve bakım",
     migration: "Göç ve uluslararası koruma",
