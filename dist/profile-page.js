@@ -27,7 +27,7 @@ const acarProfile = {
     economy: "Türkiye’de uluslararası ekonomi hukukunun uygulanması"
   }
 };
-const profiles = new Map([["ayse-ece-acar", acarProfile], ["elif-altinok-caliskan", elifProfile], ["hamide-bagceci-danaci", hamideProfile], ["sukriye-esra-baskan", esraProfile], ["seyma-cebeci-bingol", seymaProfile]]);
+const profiles = new Map([["ayse-ece-acar", acarProfile], ["elif-altinok-caliskan", elifProfile], ["hamide-bagceci-danaci", hamideProfile], ["sukriye-esra-baskan", esraProfile], ["seyma-cebeci-bingol", seymaProfile], ["ozlem-yenerer-cakmut", ozlemProfile]]);
 const locationUrl = new URL(window.location.href);
 const embeddedPage = window.self !== window.top;
 const hashProfile = decodeURIComponent(locationUrl.hash.slice(1));
