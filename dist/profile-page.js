@@ -27,7 +27,7 @@ const acarProfile = {
     economy: "Türkiye’de uluslararası ekonomi hukukunun uygulanması"
   }
 };
-const profiles = new Map([["ayse-ece-acar", acarProfile], ["elif-altinok-caliskan", elifProfile], ["hamide-bagceci-danaci", hamideProfile], ["sukriye-esra-baskan", esraProfile], ["seyma-cebeci-bingol", seymaProfile], ["ozlem-yenerer-cakmut", ozlemProfile], ["muge-cetin", mugeProfile]]);
+const profiles = new Map([["ayse-ece-acar", acarProfile], ["elif-altinok-caliskan", elifProfile], ["hamide-bagceci-danaci", hamideProfile], ["sukriye-esra-baskan", esraProfile], ["seyma-cebeci-bingol", seymaProfile], ["ozlem-yenerer-cakmut", ozlemProfile], ["muge-cetin", mugeProfile], ["selmin-cansu-demir", selminProfile]]);
 const locationUrl = new URL(window.location.href);
 const embeddedPage = window.self !== window.top;
 const hashProfile = decodeURIComponent(locationUrl.hash.slice(1));
@@ -213,7 +213,11 @@ byId("hero-role").textContent = profile.role || "Dr. Öğr. Üyesi";
 byId("hero-field").textContent = profile.field;
 byId("hero-bio").textContent = profile.bio;
 byId("university-profile").href = profile.universityUrl;
-byId("yok-profile").href = profile.yokUrl;
+if (profile.yokUrl) byId("yok-profile").href = profile.yokUrl;
+else {
+  byId("yok-profile").href = profile.altProfile[1];
+  byId("yok-profile").textContent = profile.altProfile[0];
+}
 if (profile.audit?.length) {
   byId("source-audit").hidden = false;
   for (const [label, note, url] of profile.audit) {
