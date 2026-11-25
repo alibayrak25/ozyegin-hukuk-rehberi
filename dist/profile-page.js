@@ -1,6 +1,7 @@
 const byId = id => document.getElementById(id);
 const acarProfile = {
   name: "Ayşe Ece Acar",
+  role: "Dr. Öğr. Üyesi",
   field: "Medeni Usul ve İcra İflas Hukuku",
   bio: "Elektronik delil ve tebligat, hukuk yargılaması ve istinaf, haciz ve malvarlığı hukuku üzerine çalışıyor.",
   universityUrl: "https://www.ozyegin.edu.tr/tr/akademik-kadro/eceacar",
@@ -26,9 +27,11 @@ const acarProfile = {
     economy: "Türkiye’de uluslararası ekonomi hukukunun uygulanması"
   }
 };
-const profiles = new Map([["ayse-ece-acar", acarProfile], ["elif-altinok-caliskan", elifProfile]]);
+const profiles = new Map([["ayse-ece-acar", acarProfile], ["elif-altinok-caliskan", elifProfile], ["hamide-bagceci-danaci", hamideProfile]]);
 const locationUrl = new URL(window.location.href);
-const requestedProfile = locationUrl.searchParams.get("hoca");
+const embeddedPage = window.self !== window.top;
+const hashProfile = decodeURIComponent(locationUrl.hash.slice(1));
+const requestedProfile = locationUrl.searchParams.get("hoca") || (profiles.has(hashProfile) ? hashProfile : null);
 const profile = profiles.get(requestedProfile) || acarProfile;
 const {themes, works, themeNotes} = profile;
 const sortedWorks = [...works].sort((first, second) => second.year - first.year);
@@ -193,11 +196,20 @@ function renderProfileSummary() {
 for (const [id, value] of profiles) byId("academic-picker").add(new Option(value.name, id));
 byId("academic-picker").value = profiles.has(requestedProfile) ? requestedProfile : "ayse-ece-acar";
 byId("academic-picker").addEventListener("change", event => {
+  if (embeddedPage) {
+    window.location.hash = event.target.value;
+    return;
+  }
   locationUrl.searchParams.set("hoca", event.target.value);
   window.location.assign(locationUrl.href);
 });
+window.addEventListener("hashchange", () => {
+  const next = decodeURIComponent(window.location.hash.slice(1));
+  if (profiles.has(next) && next !== requestedProfile && !locationUrl.searchParams.get("hoca")) window.location.reload();
+});
 document.title = `${profile.name} | Özyeğin Hukuk Akademisyen Rehberi`;
 byId("hero-name").textContent = profile.name;
+byId("hero-role").textContent = profile.role || "Dr. Öğr. Üyesi";
 byId("hero-field").textContent = profile.field;
 byId("hero-bio").textContent = profile.bio;
 byId("university-profile").href = profile.universityUrl;

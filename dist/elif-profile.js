@@ -88,6 +88,7 @@ const elifEditorials = [
 
 const elifProfile = {
   name: "Elif Altınok Çalışkan",
+  role: "Dr. Öğr. Üyesi",
   field: "İdare Hukuku",
   bio: "İdarenin görevleri, yetkileri ve yargısal denetimi üzerine çalışıyor. Araştırmaları göç ve uluslararası koruma, sağlık ve bakım hizmetleri, kişisel veriler, hayvanlara ilişkin idari kolluk ve imar hukukuna uzanıyor.",
   universityUrl: elifUniversityUrl,
