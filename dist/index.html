@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Özyeğin Hukuk akademisyenlerinin araştırma temaları ve kaynaklı çalışma kayıtları.">
+  <title>Ayşe Ece Acar | Özyeğin Hukuk Akademisyen Rehberi</title>
+  <link rel="stylesheet" href="site.css">
+  <script src="works.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner"><span class="mark" aria-hidden="true">H</span><strong>Özyeğin Hukuk</strong><span class="top-label">Akademisyen rehberi</span></div>
+  </header>
+  <main class="wrap">
+    <header class="hero">
+      <p class="eyebrow">Medeni Usul ve İcra İflas Hukuku</p>
+      <h1>Ayşe Ece Acar</h1>
+      <p class="role">Dr. Öğr. Üyesi</p>
+      <p class="bio">Elektronik delil ve tebligat, hukuk yargılaması ve istinaf, haciz ve malvarlığı hukuku üzerine çalışıyor.</p>
+      <div class="hero-links">
+        <a href="https://www.ozyegin.edu.tr/tr/akademik-kadro/eceacar" target="_blank" rel="noopener noreferrer">Özyeğin profili</a>
+        <a href="https://akademik.yok.gov.tr/academician-details?authorGuidId=E49058D621B20A1D" target="_blank" rel="noopener noreferrer">YÖK Akademik</a>
+      </div>
+    </header>
+    <div class="views" aria-label="Profil bölümleri">
+      <button id="themes-tab" type="button" aria-pressed="true" aria-controls="theme-view">Araştırma temaları</button>
+      <button id="works-tab" type="button" aria-pressed="false" aria-controls="works-view">Tüm çalışmalar <span id="total"></span></button>
+    </div>
+    <div class="profile-grid">
+      <section id="theme-view" aria-label="Araştırma temaları"></section>
+      <section id="works-view" aria-label="Tüm çalışmalar" hidden>
+        <form id="filters" role="search">
+          <label class="search">Çalışmalarda ara <input id="query" type="search" placeholder="Örn. nafaka, kripto, elektronik imza"></label>
+          <div class="filter-row">
+            <label>Tema<select id="theme-filter"><option value="">Tüm temalar</option></select></label>
+            <label>Tür<select id="type-filter"><option value="">Tüm türler</option></select></label>
+            <label>Yıl<select id="year-filter"><option value="">Tüm yıllar</option></select></label>
+          </div>
+          <div class="result-bar"><p id="result-count" role="status"></p><button id="clear" type="reset">Filtreleri temizle</button></div>
+        </form>
+        <ul class="work-list" id="work-list"></ul>
+      </section>
+      <article id="detail" class="detail" aria-label="Çalışma ayrıntısı" aria-live="polite" tabindex="-1">
+        <p id="detail-meta" class="eyebrow"></p>
+        <h2 id="detail-title"></h2>
+        <dl>
+          <dt>Araştırma sorusu veya konusu</dt>
+          <dd id="detail-question"></dd>
+          <dt>İnceleme notu</dt>
+          <dd id="detail-finding"></dd>
+        </dl>
+        <p id="detail-tags" class="tags"></p>
+        <a id="source" class="source" target="_blank" rel="noopener noreferrer">Kaynağı aç</a>
+      </article>
+    </div>
+    <footer><span>Özyeğin Hukuk Akademisyen Rehberi</span><span>Kaynak taraması · 25 Kasım 2026</span></footer>
+  </main>
+</body>
+</html>
