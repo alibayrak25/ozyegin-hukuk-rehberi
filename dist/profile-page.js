@@ -27,7 +27,7 @@ const acarProfile = {
     economy: "Türkiye’de uluslararası ekonomi hukukunun uygulanması"
   }
 };
-const profiles = new Map([["ayse-ece-acar", acarProfile], ["elif-altinok-caliskan", elifProfile], ["hamide-bagceci-danaci", hamideProfile], ["sukriye-esra-baskan", esraProfile], ["seyma-cebeci-bingol", seymaProfile], ["ozlem-yenerer-cakmut", ozlemProfile], ["muge-cetin", mugeProfile], ["selmin-cansu-demir", selminProfile], ["ozge-yucel-dericiler", ozgeProfile], ["hulusi-alphan-dinckol", alphanProfile], ["hande-gur-orcan", handeProfile], ["ekin-deniz-ilhan", ekinProfile], ["evrim-kerman", evrimProfile], ["akin-kivrakdal", akinProfile], ["melda-kose", meldaProfile], ["didem-kose", didemProfile]]);
+const profiles = new Map([["ayse-ece-acar", acarProfile], ["elif-altinok-caliskan", elifProfile], ["hamide-bagceci-danaci", hamideProfile], ["sukriye-esra-baskan", esraProfile], ["seyma-cebeci-bingol", seymaProfile], ["ozlem-yenerer-cakmut", ozlemProfile], ["muge-cetin", mugeProfile], ["selmin-cansu-demir", selminProfile], ["ozge-yucel-dericiler", ozgeProfile], ["hulusi-alphan-dinckol", alphanProfile], ["hande-gur-orcan", handeProfile], ["ekin-deniz-ilhan", ekinProfile], ["evrim-kerman", evrimProfile], ["akin-kivrakdal", akinProfile], ["melda-kose", meldaProfile], ["didem-kose", didemProfile], ["ayca-kucuk", aycaProfile]]);
 const locationUrl = new URL(window.location.href);
 const embeddedPage = window.self !== window.top;
 const hashProfile = decodeURIComponent(locationUrl.hash.slice(1));
