@@ -7,28 +7,32 @@
   <meta name="description" content="Özyeğin Hukuk akademisyenlerinin araştırma temaları ve kaynaklı çalışma kayıtları.">
   <title>Ayşe Ece Acar | Özyeğin Hukuk Akademisyen Rehberi</title>
   <meta name="theme-color" content="#13232c">
-  <link rel="stylesheet" href="design.css">
+  <link rel="stylesheet" href="design.css?v=3">
   <script src="works.js" defer></script>
-  <script src="site.js?v=2" defer></script>
+  <script src="elif.js" defer></script>
+  <script src="site.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip" href="#catalog">Çalışmalara geç</a>
   <header class="top">
     <div class="wrap top-inner">
       <div class="brand"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><div><strong>Özyeğin Hukuk</strong><span class="top-label">Akademisyen rehberi</span></div></div>
-      <button id="search-shortcut" class="quick-search" type="button"><span class="magnifier" aria-hidden="true"></span> Çalışmalarda ara</button>
+      <div class="top-actions">
+        <label class="profile-picker">Akademisyen<select id="academic-picker" aria-label="Akademisyen seç"></select></label>
+        <button id="search-shortcut" class="quick-search" type="button"><span class="magnifier" aria-hidden="true"></span> Çalışmalarda ara</button>
+      </div>
     </div>
   </header>
   <main class="wrap">
     <header class="hero">
       <div class="hero-copy">
-        <p class="hero-field">Medeni Usul ve İcra İflas Hukuku</p>
-        <h1>Ayşe Ece Acar</h1>
+        <p id="hero-field" class="hero-field">Medeni Usul ve İcra İflas Hukuku</p>
+        <h1 id="hero-name">Ayşe Ece Acar</h1>
         <p class="role">Dr. Öğr. Üyesi</p>
-        <p class="bio">Elektronik delil ve tebligat, hukuk yargılaması ve istinaf, haciz ve malvarlığı hukuku üzerine çalışıyor.</p>
+        <p id="hero-bio" class="bio">Elektronik delil ve tebligat, hukuk yargılaması ve istinaf, haciz ve malvarlığı hukuku üzerine çalışıyor.</p>
         <div class="hero-links">
-          <a href="https://www.ozyegin.edu.tr/tr/akademik-kadro/eceacar" target="_blank" rel="noopener noreferrer">Özyeğin profili</a>
-          <a href="https://akademik.yok.gov.tr/academician-details?authorGuidId=E49058D621B20A1D" target="_blank" rel="noopener noreferrer">YÖK Akademik</a>
+          <a id="university-profile" href="https://www.ozyegin.edu.tr/tr/akademik-kadro/eceacar" target="_blank" rel="noopener noreferrer">Özyeğin profili</a>
+          <a id="yok-profile" href="https://akademik.yok.gov.tr/academician-details?authorGuidId=E49058D621B20A1D" target="_blank" rel="noopener noreferrer">YÖK Akademik</a>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="visual-sheet sheet-back"></div><div class="visual-sheet sheet-front"><i></i><i></i><i></i><span></span></div></div>
@@ -66,6 +70,10 @@
       </article>
       </div>
     </section>
+    <details id="source-audit" class="audit" hidden>
+      <summary>Kaynak taraması</summary>
+      <ul id="audit-list"></ul>
+    </details>
     <footer><span>Özyeğin Hukuk Akademisyen Rehberi</span><span>Kaynak taraması · 25 Kasım 2026</span></footer>
   </main>
 </body>

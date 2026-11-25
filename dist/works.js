@@ -1,4 +1,4 @@
-const themes = {
+const acarThemes = {
   digital: "Elektronik delil ve tebligat",
   procedure: "Yargılama usulü ve istinaf",
   enforcement: "Haciz ve malvarlığı",
@@ -9,7 +9,7 @@ const themes = {
 const yok = "https://akademik.yok.gov.tr/academician-details?authorGuidId=E49058D621B20A1D";
 const avesis = "https://avesis.istanbul.edu.tr/delipinar/yayinlar?themeId=1";
 const publisher = "https://www.onikilevha.com.tr/yazar/235/dr-ayse-ece-acar";
-const works = [
+const acarWorks = [
   ["e-durusma", 2026, "Makale", "Özet", "Hukuk yargılamasında ön inceleme duruşmasının ses ve görüntü nakledilmesi yoluyla icrası ve 12. Yargı Paketi’nin getirdiği yenilikler", ["digital","procedure"], "E-duruşma · Ön inceleme · Mahkemeye erişim", "Ön inceleme duruşmasına uzaktan katılımı imza şartı nasıl etkiliyor?", "HMK m. 149 değişikliğini önceki uygulama, geçiş dönemi, mahkemeye erişim ve avukatsız tarafların güvenli elektronik imza kullanabilmesi bakımından değerlendiriyor.", "https://www.jurix.com.tr/article/45610?c=0&u=0"],
   ["tanik", 2025, "Makale", "Tam metin", "7251 sayılı Kanun’la yapılan değişikliklerden sonra ilk derece hukuk mahkemelerinde tanık listesinin sunulma zamanına ilişkin uygulamanın değerlendirilmesi", ["procedure"], "Tanık listesi · Delil · Ön inceleme", "Taraflardan tanık listesini hangi aşamada sunmaları istenmeli?", "Öğreti ve Yargıtay kararları üzerinden, tanık deliline başta dayanılmasını ve listenin mahkeme tanık dinlenmesine karar verdikten sonra alınmasını savunuyor.", "https://dergipark.org.tr/tr/pub/ybuhukuk/article/1573261"],
   ["iik363", 2023, "Makale", "Özet", "İcra ve İflas Kanunu’nun madde 363 düzenlemesine dair bazı tespitler ve değerlendirmeler", ["procedure"], "İstinaf · İİK 363 · İcra mahkemesi", "Bazı icra mahkemesi kararlarına karşı istinafın kapatılması takibi hızlandırıyor mu?", "Yazar, maddenin uygulamada hedeflenen hızın tersine sonuçlar doğurabildiğini belirtiyor ve düzenlemenin yeniden ele alınmasını öneriyor.", "https://search.trdizin.gov.tr/tr/yayin/detay/1225607/"],

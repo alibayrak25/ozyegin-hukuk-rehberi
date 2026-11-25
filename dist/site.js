@@ -1,16 +1,32 @@
 const byId = id => document.getElementById(id);
+const acarProfile = {
+  name: "Ayşe Ece Acar",
+  field: "Medeni Usul ve İcra İflas Hukuku",
+  bio: "Elektronik delil ve tebligat, hukuk yargılaması ve istinaf, haciz ve malvarlığı hukuku üzerine çalışıyor.",
+  universityUrl: "https://www.ozyegin.edu.tr/tr/akademik-kadro/eceacar",
+  yokUrl: yok,
+  themes: acarThemes,
+  works: acarWorks,
+  featured: "kripto-haciz",
+  themeNotes: {
+    digital: "Elektronik imza, UETS ve e-duruşma",
+    procedure: "Tanık listesi, ihtiyati tedbir ve istinaf",
+    enforcement: "Kripto, koleksiyonlar, hayvan haczi ve nafaka",
+    heritage: "Kültür varlıkları ve UNESCO",
+    economy: "Türkiye’de uluslararası ekonomi hukukunun uygulanması"
+  }
+};
+const profiles = new Map([["ayse-ece-acar", acarProfile], ["elif-altinok-caliskan", elifProfile]]);
+const locationUrl = new URL(window.location.href);
+const requestedProfile = locationUrl.searchParams.get("hoca");
+const profile = profiles.get(requestedProfile) || acarProfile;
+const {themes, works, themeNotes} = profile;
 const sortedWorks = [...works].sort((first, second) => second.year - first.year);
 const smallScreen = matchMedia("(max-width: 730px)");
 const selectedDetail = byId("detail");
-let selected = sortedWorks.find(work => work.id === "kripto-haciz");
+const featuredWork = sortedWorks.find(work => work.id === profile.featured) || sortedWorks[0];
+let selected = featuredWork;
 let activeView = "themes";
-const themeNotes = {
-  digital: "Elektronik imza, UETS ve e-duruşma",
-  procedure: "Tanık listesi, ihtiyati tedbir ve istinaf",
-  enforcement: "Kripto, koleksiyonlar, hayvan haczi ve nafaka",
-  heritage: "Kültür varlıkları ve UNESCO",
-  economy: "Türkiye’de uluslararası ekonomi hukukunun uygulanması"
-};
 
 function normalize(value) {
   return value.toLocaleLowerCase("tr-TR").replaceAll("ı", "i").normalize("NFD").replace(/\p{M}/gu, "");
@@ -79,7 +95,7 @@ function renderThemes() {
     const count = document.createElement("span");
     const list = document.createElement("ul");
     section.className = `topic topic-${id}`;
-    section.open = id === "enforcement";
+    section.open = featuredWork.topics[0] === id;
     symbol.className = "topic-symbol";
     symbol.setAttribute("aria-hidden", "true");
     copy.className = "topic-copy";
@@ -115,8 +131,34 @@ function switchView(view) {
   byId("works-tab").setAttribute("aria-pressed", String(!showingThemes));
   byId("theme-view").hidden = !showingThemes;
   byId("works-view").hidden = showingThemes;
-  if (showingThemes && !selected) showWork(sortedWorks.find(work => work.id === "kripto-haciz"));
+  if (showingThemes && !selected) showWork(featuredWork);
   if (!showingThemes) renderList();
+}
+
+for (const [id, value] of profiles) byId("academic-picker").add(new Option(value.name, id));
+byId("academic-picker").value = profiles.has(requestedProfile) ? requestedProfile : "ayse-ece-acar";
+byId("academic-picker").addEventListener("change", event => {
+  locationUrl.searchParams.set("hoca", event.target.value);
+  window.location.assign(locationUrl.href);
+});
+document.title = `${profile.name} | Özyeğin Hukuk Akademisyen Rehberi`;
+byId("hero-name").textContent = profile.name;
+byId("hero-field").textContent = profile.field;
+byId("hero-bio").textContent = profile.bio;
+byId("university-profile").href = profile.universityUrl;
+byId("yok-profile").href = profile.yokUrl;
+if (profile.audit?.length) {
+  byId("source-audit").hidden = false;
+  for (const [label, note, url] of profile.audit) {
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.textContent = label;
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    item.append(link, ` — ${note}`);
+    byId("audit-list").append(item);
+  }
 }
 
 for (const [id, name] of Object.entries(themes)) byId("theme-filter").add(new Option(name, id));

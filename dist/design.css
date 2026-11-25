@@ -29,6 +29,9 @@ button, summary { cursor: pointer; }
 .brand { display: flex; align-items: center; gap: .65rem; line-height: 1.24; }
 .brand strong { letter-spacing: -.02em; }
 .top-label { display: block; color: var(--muted); font-size: .83rem; margin-top: .2rem; }
+.top-actions { display: flex; align-items: center; gap: .55rem; }
+.profile-picker { display: flex; gap: .55rem; align-items: center; color: var(--muted); font-size: .86rem; }
+.profile-picker select { width: auto; max-width: 100%; }
 .mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; gap: 3px; border-radius: 12px; background: var(--night); }
 .mark i { width: 4px; height: 15px; border-radius: 4px; background: var(--mint); transform: rotate(24deg); }
 .mark i:nth-child(2) { height: 21px; }
@@ -113,12 +116,19 @@ select { appearance: none; padding-right: 1.35rem; background-image: linear-grad
 .result-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .25rem .85rem; padding-top: .25rem; color: var(--muted); font-size: .9rem; }
 #clear { border: 0; background: transparent; color: var(--teal); text-decoration: underline; text-underline-offset: .2em; min-height: 44px; }
 footer { margin-top: 2.3rem; padding: 1rem 0 1.6rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1rem; color: var(--muted); font-size: .875rem; }
+.audit { margin-top: 1.25rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--surface); }
+.audit summary { display: flex; min-height: 49px; padding: .55rem .85rem; font-weight: 650; }
+.audit summary::after { margin-left: auto; }
+.audit ul { margin: 0; padding: .2rem 1.2rem 1rem 2rem; color: var(--muted); }
+.audit li + li { margin-top: .48rem; }
 @media (max-width: 730px) {
   .wrap { width: min(100% - 1.5rem, 1180px); }
   .hero { grid-template-columns: minmax(0, 1fr); }
   .hero-visual { position: absolute; inset: -6% -12% auto auto; width: min(53%, 240px); opacity: .26; pointer-events: none; }
   .profile-grid { grid-template-columns: minmax(0, 1fr); }
   .detail { position: static; }
+  .top-inner { flex-wrap: wrap; padding-block: .55rem; }
+  .top-actions { flex-wrap: wrap; }
 }
 @media (max-width: 405px) {
   .top-inner { min-height: 68px; }
